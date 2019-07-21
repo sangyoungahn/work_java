@@ -1,0 +1,46 @@
+package com.ssafy.algo;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class DigitTest1 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[] numArr = new int[100];	//입력받는 정수를 저장하는 배열
+		int[] tenArr = new int[100];	//십의자리 수만 저장하는 배열
+		int[] idxArr = new int[10];		//0~9까지의 나온 인덱스를 저장하는 배열
+		int cnt = 0;
+		int tempNum = 0;
+
+		//값을 입력받음
+		for(int i=0; i<100; i++) {
+			int inputNum = sc.nextInt();
+			cnt++;
+			if(inputNum == 0) {
+//				tempNum = cnt;
+				break;
+			}
+			else
+				numArr[i] = inputNum;
+		}
+
+		//십의 자리 나온 횟수를 배열에 저장
+		for(int i=0; i<cnt; i++) {
+			int idx = numArr[i]/10;
+			idxArr[idx]++;
+		}
+
+		System.out.println(Arrays.toString(idxArr));
+
+		//십의 자리 숫자를 출력
+		for(int i=0; i<cnt; i++) {
+			if(idxArr[i] != 0) {
+				System.out.println(i + " : " + idxArr[i] + "개");
+
+			}
+		}
+
+	}
+
+}
+

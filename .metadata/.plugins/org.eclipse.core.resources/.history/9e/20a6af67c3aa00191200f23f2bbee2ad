@@ -1,0 +1,57 @@
+package com.ssafy.algo;
+
+import java.util.Scanner;
+
+public class Solution21 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int T = sc.nextInt();
+
+		//테스트 케이스만큼 반복
+		for(int t=0; t<T; t++) {		//테스트케이스
+			int N = sc.nextInt();	//연못의 한 변의 길이
+			int num = sc.nextInt();		//소금쟁이의 수
+			int[][] pond = new int[N][N];		//연못의 크기
+			
+			//소금쟁이 수만큼 반복
+			for(int k=0; k<num; k++) {
+				//처음위치, 방향 입력 받기(총 3개)
+				for(int i=0; i<3; i++) {
+					int x = sc.nextInt();
+					int y = sc.nextInt();
+					int dir = sc.nextInt();
+					int[][] trace = new int[N][N];
+					int flag = 0;	//흔적이 남겨진 자리에 1을 넣어주는 변수
+					int yNext = 0;	//이동했을 때 y의 다음값을 넣는 변수(+3, +2, +1)
+					int xNext = 0;	//이동했을 때 x의 다음값을 넣는 변수(+3, +2, +1)
+
+					//입력 받은 x,y를 초기 위치에 넣음
+					pond[x][y]=1;
+
+					//dir=1이면 연못 배열에서 아래로 이동(배열의 y값을 증가시켜줌)
+					if(dir==1) {
+						for(int j=3; j>0; j--) {
+							yNext = j;
+							pond[x][yNext] = 1;
+						}
+					}
+					
+					//dir=2이면 연못 배열에서 오른쪽으로 이동(배열의 x값을 증가시켜줌)
+					else {
+						for(int j=3; j>0; j--) {
+							xNext = j;
+							pond[xNext][y] = 1;
+						}
+					}
+				}
+			}
+			//	int[] x = new int[num];
+			//	int[] y = new int[num];
+			//	int[] dir = new int[num];
+			
+		}
+	}
+
+}
